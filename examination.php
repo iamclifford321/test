@@ -1,27 +1,27 @@
 <?php
     require_once('Classes/loader.php');
-    
+
     session_start();
-    
+
     $createController = new CreateController();
     $sweetAlert = new SweetAlert();
-    
-    // var_dump('<br> _SESSION → ',$_SESSION, '.<br />'); 
-    
-    $isDisabled = 'disabled';
-    $updateExamId =''; 
-    
-    // var_dump('<br />POST → ', $_POST); 
 
-    if(isset($_SESSION)){ 
+    // var_dump('<br> _SESSION → ',$_SESSION, '.<br />');
+
+    $isDisabled = 'disabled';
+    $updateExamId ='';
+
+    // var_dump('<br />POST → ', $_POST);
+
+    if(isset($_SESSION)){
         $getAdminId = '';
-        if(isset($_SESSION['admin_id'])){ 
-            $getAdminId = $_SESSION['admin_id']; 
+        if(isset($_SESSION['admin_id'])){
+            $getAdminId = $_SESSION['admin_id'];
         }
         if($getAdminId){
-            $isDisabled = ''; 
-        } 
-    } 
+            $isDisabled = '';
+        }
+    }
     /* if(isset($_POST['updateExam'])){
 $updateExamId = $_POST['updateExam']; } */ ?>
 <!DOCTYPE html>
@@ -38,7 +38,7 @@ $updateExamId = $_POST['updateExam']; } */ ?>
      <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
      <link rel="stylesheet" href="style.css">
      <script src="assets/js/jquery-3.6.0.min.js"></script>
-     <?php 
+     <?php
           include 'script_loader.php';
      ?>
 </head>
@@ -65,7 +65,7 @@ $updateExamId = $_POST['updateExam']; } */ ?>
                     <div class="sidebar-brand-icon rotate-n-15">
                         <i class="fas fa-laugh-wink"></i>
                     </div>
-                    <div class="sidebar-brand-text mx-3"><span>NMSC</span></div>
+                    <div class="sidebar-brand-text mx-3"><span>NMSCd</span></div>
                 </a>
                 <hr class="sidebar-divider my-0" />
                 <ul class="navbar-nav text-light" id="accordionSidebar">
@@ -359,7 +359,7 @@ $updateExamId = $_POST['updateExam']; } */ ?>
                                     <tbody>
                                         <?php
                                             $rows = $createController->getExam();
-                                            while ($row = $rows->fetch_assoc()) { 
+                                            while ($row = $rows->fetch_assoc()) {
                                         ?>
                                                 <tr>
                                                     <td class="col-5 text-truncate">
@@ -391,8 +391,8 @@ $updateExamId = $_POST['updateExam']; } */ ?>
                                                     </td>
                                                 </tr>
 
-                                        <?php 
-                                            } 
+                                        <?php
+                                            }
                                         ?>
                                     </tbody>
                                 </table>
@@ -430,18 +430,17 @@ $updateExamId = $_POST['updateExam']; } */ ?>
         $getErrorSystem = $getError->errorSystem; // $redirectlink =
         'login.php';
             if($getErrorSystem){
-                $sweetAlert->displaySweetAlert('error', 'Oops...', $getErrorSystem); 
+                $sweetAlert->displaySweetAlert('error', 'Oops...', $getErrorSystem);
             }
     }
 
-    $getSuccess = ''; 
-    if(isset($_SESSION['getSuccess'])){ 
-        $getSuccess = $_SESSION['getSuccess']; 
-    } 
-    
+    $getSuccess = '';
+    if(isset($_SESSION['getSuccess'])){
+        $getSuccess = $_SESSION['getSuccess'];
+    }
+
     if($getSuccess){
-        $sweetAlert->displaySweetAlert('success', 'Success', $getSuccess); 
+        $sweetAlert->displaySweetAlert('success', 'Success', $getSuccess);
     }
     $_SESSION['getError'] = array(); $_SESSION['getSuccess'] = '';
 ?>
-
